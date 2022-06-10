@@ -1,0 +1,36 @@
+#!/bin/bash
+
+changed_files=$(git diff --cached --name-only)
+ret=0
+prefix="-- [pre-commit]"
+
+for file in $changed_files ; do
+  tools/cpplint.py --filter=-build/c++11 --linelength=100 $file 2>&1 \
+    | grep -v Ignoring \
+    | grep -v "Total errors" \
+    | grep -v "Done processing"
+  if [ ${PIPESTATUS[0]} -ne 0 ]; then
+    ret=1
+  fi
+done
+
+if [[ $ret != 0 ]]; then
+  echo "$prefix C++ code style check: Failed. Please use tools/format2google to format those files."
+  exit $ret
+fi
+echo "$prefix C++ code style check: Pass."
+
+############################## Python API Hooks Beg ####################################
+oldopt_py_bak=$-
+
+./tools/python_checks/check_all.sh "$prefix" --staged HEAD
+
+if [ $? -eq 0 ]; then
+  echo "$prefix All python code check Passed."
+else
+  exit 1
+fi
+
+set -$oldopt_py_bak
+./tools/git-hooks/pre-commit-hook
+############################## Python API Hooks End ####################################

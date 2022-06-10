@@ -1,0 +1,12 @@
+#!/bin/sh
+
+prefix="-- [commit-msg]"
+echo "$prefix Checking commit normative."
+npx --no-install commitlint --edit $1 -g tools/git-hooks/commitlint.config.js | grep -v problems
+if [ $? -eq 0 ]; then
+  echo "$prefix Failed."
+  exit 1
+else
+  echo "$prefix Passed."
+  exit 0
+fi

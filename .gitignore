@@ -1,0 +1,56 @@
+# Common
+[Bb]uild/
+*.o
+
+# Ctags
+TAGS
+
+# Mac files
+.DS_Store
+
+# Python files
+*__pycache__*
+.ipynb_checkpoints
+/pip_test
+/_python_build
+*.pyc
+
+# Node files
+node_modules
+
+# Bazel files
+/.bazelrc.user
+/bazel-*
+/bazel_pip
+bazel-*
+
+# Editor
+*.swp
+*.swo
+*.swn
+.vscode/
+.idea/**
+
+# CMake files
+cmake_build/
+CMakeFiles/
+cmake_install.cmake
+CMakeCache.txt
+
+# Android
+.gradle
+.idea
+*.iml
+local.properties
+gradleBuild
+
+# iOS
+*.pbxproj
+*.xcworkspace
+/*.podspec
+Podfile.lock
+Pods
+xcuserdata
+
+# coverage
+

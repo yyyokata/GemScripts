@@ -1,0 +1,25 @@
+type(<scope>): <subject>
+
+<Body>
+
+# 提交前请务必按照下面的 commit-message 规范认真填写。
+# （Header长度限制为128个字符）
+ 
+# <type>    (必填): 填写此次修改类型:
+#                   --feat:     添加新功能、新特性。
+#                   --fix :     修复 BUG。
+#                   --docs:     增加或修改文档。
+#                   --style:    修改代码风格，但不影响代码逻辑。
+#                   --refactor: 重构代码或模块。
+#                   --perf:     提升性能。
+#                   --test:     增加或修改测试用例。
+#                   --chore:    修改工具类文件，包括但不限于文档生成工具、代码生成、格式化工具等。
+# <scope>   (必填): 说明此次提交影响的模块范围，有如下限制：
+#                   试图用*代表多个模块是不被允许的，此种情况下推荐至少写一个主要模块和一个次要模块。
+# <subject> (必填): 请使用祈使语气对提交进行简要概括说明，首字母不要大写，结尾无句号。如：fix a memory-leak of conv_test in xxx.cpp。
+# <Body>    (必填): 详细说明此次的修改意图、描述Bug出现根因及解决方式、描述性能提升情况、新增工具/文档说明等。
+# <Modified>(选填): 填写修改的文件列表，如文件过多可填写重要或关键的修改文件,以 cnnl 为根目录填写文件路径。
+
+# revert格式: 如果当前修改用于撤销以前的commit, 必须以 revert: 开头，后面跟被撤销的 commit 的 Header。例：
+# revert: docs(ops): fix small types
+# This reverts commit 617d915f02317a173331b1667e7392f43cc1654a.
